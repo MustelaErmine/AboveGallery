@@ -1,0 +1,18 @@
+{
+    "name": "AboveGallery.Installers",
+    "rootNamespace": "",
+    "references": [
+        "GUID:c8f7454b83b919c44b400892819edfe2",
+        "GUID:ef37616fffcdade4d8afcb4ccd1c427a",
+        "GUID:0d5fe5efb314dea448b1df24ff2ae003"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

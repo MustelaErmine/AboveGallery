@@ -1,0 +1,17 @@
+{
+    "name": "AboveGallery.Presenters",
+    "rootNamespace": "",
+    "references": [
+        "GUID:c8f7454b83b919c44b400892819edfe2",
+        "GUID:ef37616fffcdade4d8afcb4ccd1c427a"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
