@@ -1,9 +1,8 @@
-namespace AboveGallery.Model
+namespace AboveGallery.Model.Picture
 {
     public interface IPictureModel
     {
-        string WWWPicturePath { get; }
-        int Number { get; }
+        int Id { get; }
         bool IsPremium { get; }
     }
 }
