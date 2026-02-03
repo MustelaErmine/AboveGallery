@@ -1,4 +1,4 @@
-using AboveGallery.Model;
+using AboveGallery.Model.Picture;
 using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine;
@@ -10,20 +10,26 @@ namespace AboveGallery.Presenters.Providers
     {
         public async UniTask<Texture2D> GetPicture(IPictureModel model)
         {
-            string path = model.WWWPicturePath;
+            if (model is not IPictureDownloadable)
+            {
+                throw new NotImplementedException();
+            }
+
+            string path = ((IPictureDownloadable)model).WWWPicturePath;
             if (string.IsNullOrEmpty(path))
             {
                 throw new ArgumentException("Path is empty", nameof(model));
             }
 
             Texture2D texture;
-
             using (var request = UnityWebRequest.Get(path))
             {
                 await request.SendWebRequest();
 
                 if (request.result != UnityWebRequest.Result.Success)
+                {
                     throw new Exception("Request result is not success for " + path);
+                }
 
                 texture = DownloadHandlerTexture.GetContent(request);
             }
