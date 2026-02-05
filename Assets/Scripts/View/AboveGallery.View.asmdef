@@ -5,7 +5,8 @@
         "Zenject",
         "DOTween.Modules",
         "UniTask.DOTween",
-        "UniTask"
+        "UniTask",
+        "Unity.TextMeshPro"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

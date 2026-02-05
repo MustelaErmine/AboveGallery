@@ -1,3 +1,5 @@
+using Zenject;
+
 namespace AboveGallery.Model.Picture
 {
     public interface IPictureModel

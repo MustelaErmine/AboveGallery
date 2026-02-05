@@ -1,4 +1,5 @@
 using AboveGallery.Model.Settings;
+using Zenject;
 
 namespace AboveGallery.Model.Picture
 {
@@ -17,5 +18,7 @@ namespace AboveGallery.Model.Picture
             _baseUrl = pictureSourceSettings.baseUrl;
             _extension = pictureSourceSettings.picturesExtension;
         }
+
+        public class Factory : PlaceholderFactory<int, PictureModel> { }
     }
 }
