@@ -1,6 +1,8 @@
 using AboveGallery.Model.Picture;
 using Cysharp.Threading.Tasks;
 using System;
+using System.Security.Cryptography;
+using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -20,18 +22,21 @@ namespace AboveGallery.Presenters.Picture.Providers
             {
                 throw new ArgumentException("Path is empty", nameof(model));
             }
-
+            Debug.Log("stage 1");
             Texture2D texture;
             using (var request = UnityWebRequest.Get(path))
             {
-                await request.SendWebRequest();
+                Debug.Log("stage 2");
+                await request.SendWebRequest().ToUniTask();
+                Debug.Log("stage 3");
 
                 if (request.result != UnityWebRequest.Result.Success)
                 {
                     throw new Exception("Request result is not success for " + path);
                 }
-
-                texture = DownloadHandlerTexture.GetContent(request);
+                Debug.Log(BitConverter.ToString(request.downloadHandler.data));
+                texture2D = DownloadHandlerTexture.GetContent(request);
+                Debug.Log("stage 4");
             }
             return texture;
         }

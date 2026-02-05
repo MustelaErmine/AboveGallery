@@ -7,9 +7,9 @@ namespace AboveGallery.Model.Gallery.TabFilter
     {
         public string Title => "All";
 
-        public IEnumerable<IPictureModel> Filter(IEnumerable<IPictureModel> sourceModels)
+        public bool Filter(IPictureModel picture)
         {
-            return sourceModels;
+            return true;
         }
     }
 }

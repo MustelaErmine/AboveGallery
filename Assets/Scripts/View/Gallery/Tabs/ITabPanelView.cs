@@ -9,5 +9,6 @@ namespace AboveGallery.View.Gallery.Tabs
         void AddTab(string tabTitle, UnityAction<TabView> onClick);
 
         void ClearTabs();
+        int CurrentTab { get; set; }
     }
 }

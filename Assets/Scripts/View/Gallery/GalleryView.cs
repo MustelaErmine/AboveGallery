@@ -2,6 +2,7 @@ using AboveGallery.View.Picture;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace AboveGallery.View.Gallery
 {
@@ -12,15 +13,20 @@ namespace AboveGallery.View.Gallery
         [SerializeField] ScrollRect _scrollRect;
         [SerializeField] GameObject _picturePrefab;
 
-        [SerializeField] float throttle = 400f;
+        [SerializeField] float throttle = 800f;
         public Transform PictureParent => _pictureParent;
         public IEnumerable<IPictureView> PictureViews { get => _pictureViews; }
 
         private List<IPictureView> _pictureViews;
 
-        void Start()
+        [Inject]
+        void Construct()
         {
             _pictureViews = new List<IPictureView>();
+        }
+
+        void Start()
+        {
             _picturePrefab.SetActive(false);
         }
 
@@ -30,7 +36,7 @@ namespace AboveGallery.View.Gallery
             {
                 var viewportBottomY = _scrollRect.viewport.rect.height;
                 var contentHeight = _contentRect.rect.height;
-                var contentBottomY = contentHeight - _contentRect.rect.y;
+                var contentBottomY = contentHeight - _contentRect.anchoredPosition.y;
                 
                 return contentBottomY - throttle < viewportBottomY;
             }

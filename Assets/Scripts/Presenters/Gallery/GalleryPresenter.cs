@@ -13,7 +13,7 @@ using Zenject;
 
 namespace AboveGallery.Presenters.Gallery
 {
-    public class GalleryPresenter : IGalleryPresenter
+    public class GalleryPresenter : IGalleryPresenter, IInitializable
     {
         public IGalleryModel Model { get; private set; }
         private IGalleryView View { get; set; }
@@ -30,8 +30,6 @@ namespace AboveGallery.Presenters.Gallery
             _isEnumeratorEnd = false;
         }
 
-        private Dictionary<IPictureModel, IPictureView> _modelToView;
-        private Dictionary<IPictureView, IPictureModel> _viewToModel;
         private List<IPicturePresenter> _picturePresenters;
         private ITabsPanelView _tabsPanel;
         private List<ITabFilter> _filters;
@@ -41,8 +39,7 @@ namespace AboveGallery.Presenters.Gallery
         private IEnumerator<IPictureModel> _pictureEnumerator;
         private bool _isEnumeratorEnd;
 
-        [Inject]
-        public void Construct()
+        public void Initialize()
         {
             ContructTabs();
             RefilterImages();
@@ -61,24 +58,23 @@ namespace AboveGallery.Presenters.Gallery
                     await UniTask.Yield();
                 }
 
-                await UniTask.WaitForSeconds(0.1f);
+                await UniTask.WaitForSeconds(0.05f);
             }
         }
 
         private void AddNewPicture()
         {
-            var newModel = _pictureEnumerator.Current;
-            bool hasNew = _pictureEnumerator.MoveNext();
-            if (!hasNew)
+            if (!_pictureEnumerator.MoveNext())
             {
                 _isEnumeratorEnd = true;
+                return;
             }
+            var newModel = _pictureEnumerator.Current;
 
             var newView = View.AddNewPicture();
-            _modelToView[newModel] = newView;
-            _viewToModel[newView] = newModel;
 
             var presenter = _picturePresenterFactory.Create(newModel, newView);
+            presenter.IsVisible = true;
             _picturePresenters.Add(presenter);
         }
 
@@ -87,10 +83,14 @@ namespace AboveGallery.Presenters.Gallery
             _currentFilter = _filters.First();
 
             _tabsPanel.ClearTabs();
-            foreach (var filter in _filters)
+            for (int i = 0; i < _filters.Count; i++)
             {
-                _tabsPanel.AddTab(filter.Title, (_) => { ApplyFilter(filter); });
+                var filter = _filters[i];
+                _tabsPanel.AddTab(filter.Title, 
+                    (_) => { _tabsPanel.CurrentTab = i; ApplyFilter(filter); });
             }
+
+            _tabsPanel.CurrentTab = 0;
         }
         private void ApplyFilter(ITabFilter filter)
         {

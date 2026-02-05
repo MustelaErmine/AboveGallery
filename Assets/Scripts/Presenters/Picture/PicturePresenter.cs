@@ -43,15 +43,9 @@ namespace AboveGallery.Presenters.Picture
 
             _isVisible = false;
             _isShowedOnce = false;
-                        
-        }
 
-        [Inject]
-        public void Initialize()
-        {
             View.IsPremium = Model.IsPremium;
         }
-
         private void ShowFirstTime()
         {
             LoadAndShowImage().Forget();
@@ -60,7 +54,9 @@ namespace AboveGallery.Presenters.Picture
         {
             Debug.Log("Show image " + Model.Id);
             var texture = await Provider.GetPicture(Model);
-            var sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+            Debug.Log(texture);
+            var sprite = Sprite.Create(texture as Texture2D, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+            Debug.Log(sprite);
             View.Sprite = sprite;
         }
     }

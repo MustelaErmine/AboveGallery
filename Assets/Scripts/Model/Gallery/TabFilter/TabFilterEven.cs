@@ -6,15 +6,9 @@ namespace AboveGallery.Model.Gallery.TabFilter
     public class TabFilterEven : ITabFilter
     {
         public string Title => "Even";
-        public IEnumerable<IPictureModel> Filter(IEnumerable<IPictureModel> sourceModels)
+        public bool Filter(IPictureModel picture)
         {
-            foreach (IPictureModel sourceModel in sourceModels)
-            {
-                if (sourceModel.Id % 2 == 0)
-                {
-                    yield return sourceModel;
-                }
-            }
+            return picture.Id % 2 == 0;
         }
     }
 }

@@ -6,15 +6,9 @@ namespace AboveGallery.Model.Gallery.TabFilter
     public class TabFilterOdd : ITabFilter
     {
         public string Title => "Odd";
-        public IEnumerable<IPictureModel> Filter(IEnumerable<IPictureModel> sourceModels)
+        public bool Filter(IPictureModel picture)
         {
-            foreach (IPictureModel sourceModel in sourceModels)
-            {
-                if (sourceModel.Id % 2 == 1)
-                {
-                    yield return sourceModel;
-                }
-            }
+            return picture.Id % 2 == 1;
         }
     }
 }
