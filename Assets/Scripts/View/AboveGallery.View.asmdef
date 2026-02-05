@@ -2,7 +2,10 @@
     "name": "AboveGallery.View",
     "rootNamespace": "",
     "references": [
-        ""
+        "Zenject",
+        "DOTween.Modules",
+        "UniTask.DOTween",
+        "UniTask"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
