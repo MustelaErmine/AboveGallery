@@ -1,6 +1,7 @@
 using AboveGallery.Model.Picture;
 using AboveGallery.View.Picture;
 using UnityEngine.Events;
+using Zenject;
 
 namespace AboveGallery.Presenters.Picture
 {
@@ -8,5 +9,7 @@ namespace AboveGallery.Presenters.Picture
     {
         IPictureModel Model { get; }
         bool IsVisible { get; set; }
+
+        public class Factory : PlaceholderFactory<IPictureModel, IPictureView, IPicturePresenter> { }
     }
 }

@@ -41,7 +41,7 @@ namespace AboveGallery.View.Gallery
             var gameObject = Instantiate(_picturePrefab, PictureParent);
             gameObject.SetActive(true);
             var view = gameObject.GetComponent<IPictureView>();
-            _pictureViews.Add(view)
+            _pictureViews.Add(view);
 
             return view;
         }

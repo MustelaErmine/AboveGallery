@@ -6,6 +6,6 @@ namespace AboveGallery.Model.Gallery.TabFilter
     public interface ITabFilter
     {
         string Title { get; }
-        IEnumerable<IPictureModel> Filter(IEnumerable<IPictureModel> sourceModels);
+        bool Filter(IPictureModel picture);
     }
 }
