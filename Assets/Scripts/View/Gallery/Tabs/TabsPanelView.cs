@@ -1,4 +1,3 @@
-#define dev
 using AboveGallery.View.Gallery.Tabs;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,12 +12,6 @@ public class TabsPanelView : MonoBehaviour
     void Start()
     {
         _tabPrefab.SetActive(false);
-#if dev
-        ClearTabs();
-        AddTab("all", (view) => { print("all"); });
-        AddTab("odd", (view) => { print(view.Text); });
-        AddTab("even", (view) => { print(view.Text); });
-#endif
     }
 
     public void AddTab(string tabTitle, UnityAction<TabView> onClick)

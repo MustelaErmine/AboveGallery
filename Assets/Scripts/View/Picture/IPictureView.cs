@@ -7,6 +7,7 @@ namespace AboveGallery.View.Picture
     {
         Sprite Sprite { set; }
         bool IsPremium { set; }
+        bool IsVisible { set; }
         Transform Parent { set; }
         UnityEvent OnClick { get; }
     }

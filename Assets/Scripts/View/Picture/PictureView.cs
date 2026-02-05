@@ -10,6 +10,7 @@ namespace AboveGallery.View.Picture
         public UnityEvent OnClick { get; private set; }
         public Sprite Sprite { set => _image.sprite = value; }
         public bool IsPremium { set => _premiumBadge.SetActive(value); }
+        public bool IsVisible { set => gameObject.SetActive(value); }
         public Transform Parent { set => transform.SetParent(value); }
 
         [SerializeField] Image _image;
