@@ -2,7 +2,7 @@ using AboveGallery.Model.Picture;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 
-namespace AboveGallery.Presenters.Providers
+namespace AboveGallery.Presenters.Picture.Providers
 {
     public interface IPictureProvider
     {

@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace AboveGallery.Presenters.Providers
+namespace AboveGallery.Presenters.Picture.Providers
 {
     public class PictureProvider : IPictureProvider
     {
