@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace AboveGallery.View.UIModules
 {
-    public class TabsView : MonoBehaviour
+    public class SliderTabsView : MonoBehaviour
     {
         public int ButtonsCount 
         { 

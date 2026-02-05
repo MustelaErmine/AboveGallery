@@ -31,7 +31,7 @@ namespace AboveGallery.View.UIModules
         [SerializeField] private AspectRatioFitter _viewAspectRatio;
         [SerializeField] private RectTransform _scrollTransform;
         [SerializeField] private SlidesContentHandler _slidesContentHandler;
-        [SerializeField] private TabsView _tabsView;
+        [SerializeField] private SliderTabsView _tabsView;
         private RectTransform _contentTransform;
         private AspectRatioFitter _contentFitter;
 
